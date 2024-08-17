@@ -9,8 +9,8 @@ phases:
       # - systemctl enable nginx
         - yum update -y
         - yum install -y httpd
-        - systemctl start httpd
-        - systemctl enable httpd
+        # - systemctl start httpd
+        # - systemctl enable httpd
       
   build:
     commands:
