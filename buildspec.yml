@@ -3,14 +3,14 @@ version: 0.2
 phases:
   install:
     commands:
-      # - yum update -y
-      # - yum install nginx -y
-      # - systemctl start nginx
-      # - systemctl enable nginx
-        - yum update -y
-        - yum install -y httpd
-        # - systemctl start httpd
-        # - systemctl enable httpd
+       - yum update -y
+       - yum install nginx -y
+       - systemctl start nginx
+       - systemctl enable nginx
+       - yum update -y
+       - yum install -y httpd
+       - systemctl start httpd
+       - systemctl enable httpd
       
   build:
     commands:
