@@ -1,22 +1,25 @@
 version: 0.2
+
 env:
-  build_image: 'aws/codebuild/standard:5.0'  # Ubuntu-based image
-  
+  build_image: 'aws/codebuild/standard:5.0'  # Amazon Linux or CentOS-based image
+
 phases:
   install:
     commands:
       - echo Installing NGINX
-      - cat /etc/os-release
-      - sudo yum update -y
-      - sudo apt-get update -y
-      - sudo apt-get install nginx -y
+      - cat /etc/os-release  # Verify OS
+      - sudo yum update -y  # Update package lists for Amazon Linux/CentOS
+      - sudo yum install nginx -y  # Install NGINX
   build:
     commands:
       - echo Build started on `date`
-      - cp index.html /var/www/html/
+      - echo Copying website files to NGINX
+      - sudo cp index.html /usr/share/nginx/html/  # Copy HTML files to NGINX root directory
   post_build:
     commands:
-      - echo Configuring NGINX
+      - echo Configuring and starting NGINX
+      - sudo systemctl start nginx  # Start NGINX service
+      - sudo systemctl enable nginx  # Enable NGINX to start on boot
 artifacts:
   files:
     - '**/*'
