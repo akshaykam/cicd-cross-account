@@ -17,9 +17,8 @@ phases:
       - sudo cp index.html /usr/share/nginx/html/  # Copy HTML files to NGINX root directory
   post_build:
     commands:
-      - echo Configuring and starting NGINX
-      - sudo systemctl start nginx  # Start NGINX service
-      - sudo systemctl enable nginx  # Enable NGINX to start on boot
+      - echo Starting NGINX without systemd
+      - sudo nginx  # Start NGINX directly
 artifacts:
   files:
     - '**/*'
