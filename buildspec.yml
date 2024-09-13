@@ -6,7 +6,9 @@ phases:
   install:
     commands:
       - echo Installing NGINX
-      - sudo apt-get update
+      - cat /etc/os-release
+      - sudo yum update -y
+      - sudo apt-get update -y
       - sudo apt-get install nginx -y
   build:
     commands:
